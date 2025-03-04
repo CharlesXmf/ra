@@ -1,0 +1,42 @@
+# 以下均在系统命令提示符中完成
+
+1. 环境设置
+# 克隆仓库
+git clone https://github.com/rte-france/BERTrend.git
+cd BERTrend
+(or https://github.com/rte-france/BERTrend/archive/refs/heads/main.zip)
+
+#设置 BERTREND_BASE_DIR环境变量（第一行每次重启都需要输入）
+set BERTREND_BASE_DIR=C:\Users\Lenovo\Desktop\AIX\RA_AI_Lab\bertrend_data
+
+echo %BERTREND_BASE_DIR%
+
+mkdir %BERTREND_BASE_DIR%
+mkdir %BERTREND_BASE_DIR%\data
+mkdir %BERTREND_BASE_DIR%\data\bertrend
+mkdir %BERTREND_BASE_DIR%\models
+mkdir %BERTREND_BASE_DIR%\logs
+
+2. 安装包
+python -m venv "%BERTREND_BASE_DIR%\bertrend"
+
+#每次重新启动时输入
+"%BERTREND_BASE_DIR%\bertrend\Scripts\activate.bat"
+#这个也是
+cd C:\Users\Lenovo\BERTrend
+
+pip install .
+
+python -c "import bertrend; print('BERTrend Import successful')"
+
+3. 数据集存储  text, timestamp. csv, xlsx, json
+dir %BERTREND_BASE_DIR%\data\bertrend\
+
+4. start
+#动态主题建模分析
+cd C:\Users\Lenovo\BERTrend\bertrend\demos\topic_analysis
+（set CUDA_VISIBLE_DEVICES=0）
+streamlit run app.py
+#弱信号分析
+cd C:\Users\Lenovo\BERTrend\bertrend\demos\weak_signals
+streamlit run app.py
